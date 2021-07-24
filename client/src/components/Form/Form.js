@@ -74,7 +74,7 @@ export default function Form({ currentId, setCurrentId }) {
                             /> */}
                         </CardContent>
                         <CardActions>
-                            <Button type="submit" color="primary">
+                            <Button variant="contained" type="submit" color="primary">
                                 Post
                             </Button>
                         </CardActions>

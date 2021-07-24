@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputBase } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
 
@@ -34,14 +34,26 @@ export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
 
     return (
         <div>
-          <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+          <Dialog fullWidth maxWidth="sm" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-              <DialogTitle id="form-dialog-title">update Post</DialogTitle>
               <DialogContent>
-                <DialogContentText>
-                  What do you want to update on today? 
-                </DialogContentText>
-                <TextField
+                <InputBase
+                  placeholder="title"
+                  inputProps={{ 'aria-label': 'title' }}
+                  value={postData.title}
+                  onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+                  multiline
+                  fullWidth
+                />
+                <InputBase
+                    placeholder="take a note..."
+                    inputProps={{ 'aria-label': 'take a note' }}
+                    value={postData.content}
+                    onChange={(e) => setPostData({ ...postData, content: e.target.value })}
+                    multiline
+                    fullWidth
+                />
+                {/* <TextField
                   name="title"
                   id="title-textarea"
                   label="Title"
@@ -63,14 +75,14 @@ export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
                   rows={6}
                   multiline
                   fullWidth
-                />
+                /> */}
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleClose} color="primary">
-                  Cancel
+                  cancel
                 </Button>
-                <Button type="submit" color="primary">
-                  Post
+                <Button variant="contained" type="submit" color="primary">
+                  save
                 </Button>
               </DialogActions>
             </form>

@@ -23,12 +23,6 @@ const App = () => {
 
   return (
     <Container maxidth="lg">
-      <AppBar position="absolute">
-        <Toolbar>
-          <Typography className={classes.appBar} variant="h6">My Project</Typography>
-        </Toolbar>
-      </AppBar>
-      <Toolbar />
       
       {/* <FormDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/> */}
       <Box my={2}>
