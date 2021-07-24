@@ -36,7 +36,7 @@ export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
         <div>
           <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-              <DialogTitle id="form-dialog-title">{currentId ? 'Update' : 'New'} Post</DialogTitle>
+              <DialogTitle id="form-dialog-title">update Post</DialogTitle>
               <DialogContent>
                 <DialogContentText>
                   What do you want to update on today? 

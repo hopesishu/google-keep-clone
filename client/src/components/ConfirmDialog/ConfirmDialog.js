@@ -10,7 +10,7 @@ const ConfirmDialog = ({ post, openConfirm, setOpenConfirm }) => {
     const handleClose = () => {
         setOpenConfirm(false);
     };
-
+ 
     return (
         <div>
           <Dialog
