@@ -8,7 +8,7 @@ export default function Form({ currentId, setCurrentId }) {
     const classes = useStyles();
     const [postData, setPostData] = useState({title: '', content: ''});
     // const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
-    const post = useSelector((state) => null);
+    const post = useSelector(() => null);
     const dispatch = useDispatch();
  
     useEffect(() => {
@@ -17,11 +17,17 @@ export default function Form({ currentId, setCurrentId }) {
 
     const handleSubmit = (e) => {
       e.preventDefault(); //prevent refresh in browser
-      if (currentId) {
-        dispatch(updatePost(currentId, postData));
+      if (postData["title"].trim().length == 0  && postData["content"].trim().length == 0) {
+          return;
       } else {
         dispatch(createPost(postData));
       }
+
+    //   if (currentId) {
+    //     dispatch(updatePost(currentId, postData));
+    //   } else {
+    //     dispatch(createPost(postData));
+    //   }
       clear();
     };
 

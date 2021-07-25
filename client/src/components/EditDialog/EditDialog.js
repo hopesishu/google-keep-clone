@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputBase } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
+import useStyles from './styles';
 
 export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
     const [postData, setPostData] = useState({title: '', content: ''});
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const dispatch = useDispatch();
+    const classes = useStyles();
  
     useEffect(() => {
       if (post) setPostData(post);
@@ -38,6 +40,7 @@ export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
               <DialogContent>
                 <InputBase
+                  className={classes.title}
                   placeholder="title"
                   inputProps={{ 'aria-label': 'title' }}
                   value={postData.title}
