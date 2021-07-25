@@ -22,8 +22,7 @@ const App = () => {
   }, [currentId, dispatch]);
 
   return (
-    <Container maxidth="lg">
-      
+    <Container maxWidth="md">
       {/* <FormDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/> */}
       <Box my={2}>
         <Form currentId={currentId} setCurrentId={setCurrentId} /> 

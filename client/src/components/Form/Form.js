@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Button, TextField, Card, CardContent, CardActions, InputBase } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
+import useStyles from './styles';
 
 export default function Form({ currentId, setCurrentId }) {
+    const classes = useStyles();
     const [postData, setPostData] = useState({title: '', content: ''});
-    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    // const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const post = useSelector((state) => null);
     const dispatch = useDispatch();
  
     useEffect(() => {
@@ -29,11 +32,12 @@ export default function Form({ currentId, setCurrentId }) {
 
     return (
         <Grid container justify="center">
-            <Grid md={8} xs={12}>
+            <Grid item md={8} xs={12}>
                 <Card>
                     <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                         <CardContent>
                             <InputBase
+                                className={classes.formTitle}
                                 placeholder="title"
                                 inputProps={{ 'aria-label': 'title' }}
                                 value={postData.title}
