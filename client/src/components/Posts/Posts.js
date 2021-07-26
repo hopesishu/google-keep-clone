@@ -11,11 +11,16 @@ const Posts = ({ setCurrentId, setOpen }) => {
     return (
         !posts.length ? <Typography variant="body1">there are currently no posts</Typography> : (
             <Grid container spacing={2}>
-                {posts.map((post) => (
+                {posts.slice(0).reverse().map((post) => (
                     <Grid key={post._id} item xs={12} md={3}>
                         <Post post={post} setCurrentId={setCurrentId} setOpen={setOpen} />
                     </Grid>
                 ))}
+                {/* {posts.map((post) => (
+                    <Grid key={post._id} item xs={12} md={3}>
+                        <Post post={post} setCurrentId={setCurrentId} setOpen={setOpen} />
+                    </Grid>
+                ))} */}
             </Grid>
         )
     );
