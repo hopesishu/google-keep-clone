@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
-import { AppBar, Container, Typography, Grow, Grid, Button, Toolbar, Box } from '@material-ui/core';
+import { AppBar, Container, Typography, Grow, Grid, Paper, Box } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts';
 import Posts from './components/Posts/Posts';
-import PostDetails from './components/PostDetails/PostDetails';
 import Form from './components/Form/Form';
 import EditDialog from './components/EditDialog/EditDialog';
 import Copyright from './components/Copyright/Copyright'
@@ -28,20 +27,21 @@ const App = () => {
 
   return (
     <Container maxWidth="md">
-        {/* <FormDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/> */}
-        <Box my={4}>
-          <Form currentId={currentId} setCurrentId={setCurrentId} /> 
-        </Box>
+      <Box mt={4} mb={2}>
+        <Grid container justify="center">
+          <Grid item md={8} xs={12}>
+              <Form currentId={currentId} setCurrentId={setCurrentId} /> 
+          </Grid>
+        </Grid>
+      </Box>
 
         <EditDialog currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen} />
         <Grow in>
-          <Box mb={4}>
-            <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-              <Grid item xs={12}>
-                <Posts setCurrentId={setCurrentId} setOpen={setOpen} />
-              </Grid>
+          <Grid container justify="space-between" alignItems="stretch" spacing={1} style={{minHeight: "55vh"}}>
+            <Grid item xs={12}>
+              <Posts setCurrentId={setCurrentId} setOpen={setOpen} />
             </Grid>
-          </Box>
+          </Grid>
         </Grow>
         <Copyright />
     </Container>

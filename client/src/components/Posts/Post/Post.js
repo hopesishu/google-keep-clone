@@ -9,6 +9,7 @@ import useStyles from './styles';
  
 const Post = ({ post, setCurrentId, setOpen }) => {
     const [openConfirm, setOpenConfirm] = useState(false);
+    const [hover, setHover] = useState(false);
     const classes = useStyles();
     
     const handleEdit = () => {
@@ -16,22 +17,29 @@ const Post = ({ post, setCurrentId, setOpen }) => {
         setOpen(true);
     }
 
+    const onHover = () => {
+        setHover(true);
+    }
+    const onUnhover = () => {
+        setHover(false);
+    }
+
     return (
         <>
             <ConfirmDialog post={post} openConfirm={openConfirm} setOpenConfirm={setOpenConfirm} />
-            <Card className={classes.card}>
+            <Card className={classes.card} elevation={hover ? 2 : 0} onMouseOver={onHover} onMouseOut={onUnhover}>
                 <CardContent className={classes.cardContent}>
                     <Typography className={classes.cardTitle} variant="body1">{post.title}</Typography>
                     <Typography variant="body1" gutterBottom>{post.content}</Typography>
                 </CardContent>
-                <CardActions disableSpacing>
-                    <IconButton size="small" color="primary" onClick={() => setOpenConfirm(true)}>
-                        <DeleteOutlinedIcon fontSize="small" />
-                    </IconButton>
+                <CardActions disableSpacing className={classes.cardActions}>
+                    <Typography className={classes.date} variant="caption" color="textSecondary">{moment(post.createdAt).format("DD/MM/YY LT")}</Typography>
                     <IconButton size="small" color="primary" onClick={handleEdit}>
                         <EditOutlinedIcon fontSize="small" />
                     </IconButton>
-                    <Typography className={classes.date} variant="caption" color="textSecondary">{moment(post.createdAt).format("DD/MM/YY LT")}</Typography>
+                    <IconButton size="small" color="primary" onClick={() => setOpenConfirm(true)}>
+                        <DeleteOutlinedIcon fontSize="small" />
+                    </IconButton>
                 </CardActions>
             </Card>
         </>

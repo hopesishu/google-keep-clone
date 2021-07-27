@@ -3,8 +3,8 @@ import { Box, Typography } from '@material-ui/core';
 
 export default function Copyright() {
     return (
-        <Box mb={6}>
-            <Typography variant="body1" color="textPrimary" align="center">
+        <Box mb={6} textAlign="center">
+            <Typography variant="subtitle2" color="textSecondary">
                 {'copyright © '}
                     hopesishu
                 {' '}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, CircularProgress, Typography } from '@material-ui/core'
+import { Grid, CircularProgress, Typography, Box } from '@material-ui/core'
 import { useSelector } from 'react-redux';//fetch data from global redux store
 
 import Post from './Post/Post';
@@ -9,7 +9,12 @@ const Posts = ({ setCurrentId, setOpen }) => {
     console.log(posts);
 
     return (
-        !posts.length ? <Typography variant="body1">there are currently no posts</Typography> : (
+        !posts.length ? 
+            <Box>
+                <Typography variant="body1" color="textSecondary" align="center">there are currently no notes</Typography> 
+                <Typography variant="body1" color="textSecondary" align="center">write a note! &#127850; </Typography>
+            </Box>
+            : (
             <Grid container spacing={2}>
                 {posts.slice(0).reverse().map((post) => (
                     <Grid key={post._id} item xs={12} md={3}>

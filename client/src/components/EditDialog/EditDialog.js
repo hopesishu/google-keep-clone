@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputBase } from '@material-ui/core';
+import { Button, TextField, Dialog, DialogActions, DialogContent, IconButton, InputBase } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
+import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
 import useStyles from './styles';
 
 export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
@@ -80,13 +82,13 @@ export default function FormDialog({ currentId, setCurrentId, open, setOpen }) {
                   fullWidth
                 /> */}
               </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                  cancel
-                </Button>
-                <Button variant="contained" type="submit" color="primary">
-                  save
-                </Button>
+              <DialogActions className={classes.dialogActions}>
+                <IconButton size="small" onClick={handleClose}>
+                  <CloseOutlinedIcon />
+                </IconButton>
+                <IconButton size="small" type="submit" color="primary">
+                  <DoneOutlinedIcon />
+                </IconButton>
               </DialogActions>
             </form>
           </Dialog>

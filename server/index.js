@@ -19,7 +19,8 @@ app.get('/', (req, res) => {
     res.send("hello! this is a google keep clone");
 })
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT; // production
+// const PORT = 5000 // development
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))) //if connection is successful

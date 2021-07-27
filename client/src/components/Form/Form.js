@@ -37,8 +37,8 @@ export default function Form({ currentId, setCurrentId }) {
     };
 
     return (
-        <Grid container justify="center">
-            <Grid item md={8} xs={12}>
+        // <Grid container justify="center">
+        //     <Grid item md={8} xs={12}>
                 <Card>
                     <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                         <CardContent>
@@ -90,7 +90,7 @@ export default function Form({ currentId, setCurrentId }) {
                         </CardActions>
                     </form>
                 </Card>
-            </Grid>
-        </Grid>
+        //     </Grid>
+        // </Grid>
     );
 }
